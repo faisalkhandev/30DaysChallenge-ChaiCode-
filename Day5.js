@@ -83,3 +83,65 @@ function person(name, age = 19) {
 }
 
 person("Ali", 20)
+
+// Write a higher-order function that takes a function and a number, and calls the function that many times.
+
+function hof(func, time) {
+    for (let i = 1; i <= time; i++) {
+        func();
+    }
+}
+
+
+function sayHello() {
+    console.log("Hello buddy")
+}
+
+hof(sayHello, 5)
+
+
+
+
+// Write a higher-order function that takes two functions and a value, applies the first function to the value, and then applies the second function to the result.
+
+
+
+// function hoff(fun1, fun2 val) {
+
+//     const res = fun1(val);
+//     fun2(res)
+
+// }
+
+
+// function firstFun(val) {
+//     console.log(val * val)
+// }
+
+// function secondFun(val) {
+//     console.log(
+//         `1st function result is ${res}, add 1 to it. ${res + 1}`
+//     )
+// }
+
+// hoff(firstFun, secondFun, 6)
+
+
+const applyFunctions = (func1, func2, value) => {
+    const firstResult = func1(value);
+    const finalResult = func2(firstResult);
+    return finalResult;
+};
+
+const addTwo = (num) => {
+    return num + 2;
+};
+
+const multiplyByThree = (num) => {
+    return num * 3;
+};
+
+const initialValue = 5;
+const res = applyFunctions(addTwo, multiplyByThree, initialValue);
+
+console.log(`The final res is ${res}`); 
