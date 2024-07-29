@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10</title>
+</head>
+<body>
+    
+    <div id="hello">
+        Task 1--------------
+        <br>
+        Hello g
+    </div>
+    <button id="btn">
+        Change the text
+    </button>
+
+    <div id="dbClick">
+        Task 2--------------
+        <br>
+        double click 
+    </div>
+
+    <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV6-DQF2pBwNFV9KzPafu9RghrNF1tZ8J3AA&s" alt="">
+
+    <button id="btnImg">Double Click and Disappear the image</button>
+ 
+    <div>
+        task 3 ---------
+        <br>
+        <div id="mouseHover">
+            Hover karo. BackGround Change ho jaye ga.
+        </div>
+    </div>
+
+    <div>
+        task 4 and 5--------
+        <br>
+        <input type="text" id="inputHa">
+    </div>
+
+    <h6>task 7</h6>
+    <form id="myForm">
+        <input type="text" id="formInput" name="formInput">
+        <button type="submit">Submit</button>
+    </form>
+ 
+
+
+
+    <div>
+
+        task 8
+        <br>
+
+        <label for="mySelect">Select an option</label>
+        <select name="" id="mySelect">
+            <option value="option 1">Option 1</option>
+            <option value="option 2">Option 2</option>
+            <option value="option 3">Option 3</option>
+        </select>
+
+        <p id="myParagraph"></p>
+    </div>
+
+
+    <div>
+        task 9 ---------
+        <br>
+        <ul id="myList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+    </div>
+
+
+
+    <div>
+        task 10 ---------
+        <br>
+        <ul id="myNewList">
+            
+        </ul>
+    
+        <button id="addItem">Add Item</button>
+    </div>
+
+    <script>
+        // Add a click event listener to a button that changes the text content of a paragraph. 
+        var textChangekaro = document.getElementById("hello");
+        var btn = document.getElementById("btn");
+        btn.addEventListener('click', function() {
+            textChangekaro.textContent = "chai pe lo ☕";
+        });
+
+        // Add a double-click event listener to an image that toggles its visibility.
+        var dbClick = document.getElementById("btnImg");
+        var img = document.getElementById("img");
+        dbClick.addEventListener('dblclick', function() {
+            img.style.display = 'none';
+        });
+
+        // Add a mouseover event listener to an element that changes its background color.
+        var mouseHover = document.getElementById("mouseHover");
+        mouseHover.addEventListener('mouseover', () => {
+            mouseHover.style.backgroundColor = 'green';
+            mouseHover.style.color = 'white';
+        });
+
+        // Add mouseout to reset to its original position.
+        mouseHover.addEventListener('mouseout', () => {
+            mouseHover.style.backgroundColor = '';
+            mouseHover.style.color = '';
+        });
+
+        // Add a keydown event listener to an input field that logs the key pressed to the console.
+        var input = document.getElementById("inputHa");
+        input.addEventListener('keydown', (event) => {
+            console.log('keyDown', event.key);
+        });
+
+        // Add a keyup event listener to an input field that displays the current value in a paragraph.
+        input.addEventListener('keyup', (event) => {
+            console.log('keyUp', event.key);
+        });
+
+        // Add a submit event listener to a form that prevents the default submission and logs the form data to the console.
+        var form = document.getElementById("myForm");
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); 
+
+            var formData = new FormData(event.target); 
+
+            var formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+
+            console.log('Form data:', formObject); 
+        });
+
+        // Add a change event listener to a select dropdown that displays the selected value in a paragraph.
+        var select = document.getElementById("mySelect")
+        var paraghraphh = document.getElementById("myParagraph")
+        select.addEventListener('change',(event)=>{
+            var selectedValue = event.target.value;
+            paraghraphh.textContent = `Selected value is : ${selectedValue}`
+
+        })
+
+        // Add a click event listener to a list that logs the text content of the clicked list item using event delegation.
+        var myList = document.getElementById("myList")
+
+        myList.addEventListener('click',(event)=>{
+            if(event.target.tagName === 'LI'){
+                console.log(event.target.textContent)
+            }
+        })
+
+
+        // Add an event listener to a parent element that listens for events from dynamically added child elements.
+        var myList = document.getElementById("myNewList");
+        var newButton = document.getElementById("addItem");
+
+        newButton.addEventListener('click', () => {
+        var newLI = document.createElement('li');
+        newLI.textContent = `New Item ${myList.children.length + 1}`;
+
+        myList.appendChild(newLI);
+        });
+
+
+    </script>
+</body>
+</html>
