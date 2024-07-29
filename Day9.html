@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dom Manipulation</title>
+    <style>
+        .hello{
+            background-color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="hello">
+      <h1 id="chai">Chai hai</h1>
+    </div>
+
+    <ul id="ulHon">
+        <li>1st</li>
+        <li>2nd</li>
+    </ul>
+
+    <img src="" alt="" class="chaiAurCode">
+
+    <div id="classAddKaro">
+        hello g
+    </div>
+
+    <button id="myButton">Click me!</button>
+    <p id="myParagraph">This text will change</p>
+
+
+
+    <div id="myElement" style="border: 1px solid black; width: 100px; height: 100px;"></div>
+
+    <script>
+      // Select an HTML element by its class and change its background color.
+      var ele = document.querySelector(".hello");
+      ele.style.backgroundColor = "lightblue";
+
+      // Select an HTML element by its ID and change its text content.
+      document.getElementById("chai").textContent = "Chai hai bhaiya. pe lo ☕";
+
+      // create a new div element with some text content and append it to the body.
+      var divCreated = document.createElement("div");
+      divCreated.textContent = 'This is new divCreated'
+      document.body.appendChild(divCreated)
+
+     //create a li element and add it to an existing ul 
+     var ul =  document.getElementById("ulHon")
+     var li = document.createElement("li")
+     li.textContent = 'Hello ggggg'
+     ul.appendChild(li)
+
+    //remove an element from the DOM  
+     ele.remove();
+
+    
+    //remove the last child of the element. 
+    ul.remove(li.lastElementChild)
+
+    // Select an HTML element and change one of its attributes (e.g., src of an image)
+    var imgCode = document.querySelectorAll(".chaiAurCode");
+      imgCode.forEach(function(image) {
+    image.src = "https://i.ytimg.com/vi/XmLOwJHFHf0/hq720.jpg?sqp=-oaymwEXCK4FEIIDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAOAlTO2uUsBch8cKpLNqe0lwayAw";
+});
+
+// Add and remove a CSS class to/from an HTML element.
+var addKaroClass = document.getElementById("classAddKaro")
+addKaroClass.classList.add("hello")
+console.log(addKaroClass.classList.contains("Hello"));  
+
+//removing the class
+addKaroClass.classList.remove("hello")
+
+
+// Add a click event listener to a button that changes the text content of a paragraph.
+var button = document.getElementById("myButton");
+var paragraph = document.getElementById("myParagraph");
+
+button.addEventListener("click", function() {
+  paragraph.textContent = "New text!";
+});
+
+// Add a mouseover event listener to an element that changes its border color.
+    // Get the element
+var el = document.getElementById("myElement");
+
+el.addEventListener("mouseover", function() {
+  el.style.borderColor = "red";
+});
+
+el.addEventListener("mouseout", function() {
+  el.style.borderColor = "black";
+});
+
+
+    </script>
+  </body>
+</html>
